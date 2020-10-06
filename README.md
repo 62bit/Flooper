@@ -7,5 +7,5 @@ The game that I made for Ludum Dare 47 <br/>
 #### Ludum Dare page:
 https://ldjam.com/events/ludum-dare/47/flooper
 
-### Play Game:
+### Play The Game:
 https://shigi242.itch.io/flooper
