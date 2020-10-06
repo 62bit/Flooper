@@ -8,4 +8,4 @@ The game that I made for Ludum Dare 47 <br/>
 https://ldjam.com/events/ludum-dare/47/flooper
 
 ### Play The Game:
-https://shigi242.itch.io/flooper
+Itch.io : https://shigi242.itch.io/flooper
