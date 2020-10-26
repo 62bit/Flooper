@@ -37,10 +37,11 @@ public class Gate : MonoBehaviour
                 if (LevelManager.m_currentLevel == 3 ) 
                 {
                     m_uiManager.ShowWinMenu();
+                    GameManager.Instance.m_timerIsTicking = false;
                     return;
                 }
                 LevelManager.m_currentLevel++;
-                GameManager.Instance.CreateNewLevel(LevelManager.m_currentLevel);                
+                GameManager.Instance.CreateNewLevel(LevelManager.m_currentLevel);
             }
         }
     }

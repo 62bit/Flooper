@@ -17,19 +17,22 @@ public class GameManager : MonoBehaviour
 
     private static GameManager m_instance = null;
 
+    public bool m_timerIsTicking;
+
     public static GameManager Instance
     {
         get
         {
-            if (m_instance != null)
+            if(m_instance != null)
                 return m_instance;
-            
+
             return null;
         }
     }
 
     private void Awake()
     {
+        m_timerIsTicking = true;
         m_instance = this;
         m_uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         m_levelContainer = GameObject.Find("Levels");
@@ -45,9 +48,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
         if(m_remTime >= 0)
         {
-            m_uiManager.SetTime(m_remTime = m_remTime - Time.deltaTime);
+            if(m_timerIsTicking)
+                m_uiManager.SetTime(m_remTime = m_remTime - Time.deltaTime);
         }
         else
         {
@@ -60,6 +65,7 @@ public class GameManager : MonoBehaviour
 
     public void CreateNewLevel(int level)
     {
+        m_timerIsTicking = true;
         m_uiManager.ShowLevelImage(level);
         m_ball.transform.position = new Vector3(0.0f, LevelManager.m_initBallCoorY, m_ball.transform.position.z);
         m_ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -81,7 +87,7 @@ public class GameManager : MonoBehaviour
         {
             GameObject ring = Instantiate(m_ringPrefab, new Vector3(0, 0, 0), Quaternion.identity);
             ring.transform.SetParent(m_levelContainer.transform);
-            float scale = LevelManager.m_initRingScale * (i+1);
+            float scale = LevelManager.m_initRingScale * (i + 1);
             ring.transform.localScale = new Vector3(scale, scale, 1f);
             m_rotationManager.m_levels.Add(ring);
         }
@@ -92,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-
+        m_timerIsTicking = true;
         foreach(var item in m_rotationManager.GetComponent<RotationManager>().m_levels)
         {
             Destroy(item);
@@ -103,11 +109,6 @@ public class GameManager : MonoBehaviour
         m_uiManager.ShowLevelImage(1);
         LevelManager.m_currentLevel = 1;
         CreateNewLevel(LevelManager.m_currentLevel);
-
     }
 
-    public void StopGame()
-    {
-
-    }
 }

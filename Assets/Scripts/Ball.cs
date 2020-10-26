@@ -17,10 +17,10 @@ public class Ball : MonoBehaviour
     {
         m_audioSource = this.gameObject.GetComponent<AudioSource>();
     }
-    
-    private void Update()
+
+    private void FixedUpdate()
     {
-        m_centerObject.transform.Rotate(new Vector3(0,0,1),m_rotationSpeed);
+        m_centerObject.transform.Rotate(new Vector3(0,0,1),m_rotationSpeed * Time.deltaTime);
     }
 
     public void ScaleOrbitSize(float f)

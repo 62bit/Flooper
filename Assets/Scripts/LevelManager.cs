@@ -22,7 +22,7 @@ public class LevelManager
     public const float m_cameraOrthoScale = 40.0f;
     public const float m_initRingScale = 10.0f;
     public const float m_initBallCoorY = 3.04f;
-    public const float m_initGunScale = 6.0f;
+    public const float m_initGunScale = 10.0f;
     public const float m_initBulletSpeed = 400.0f;
 
     public static LevelInfo GetLevel(int level)
